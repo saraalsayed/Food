@@ -1,0 +1,782 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  
+  <title>Food</title>  
+  
+  <link rel="stylesheet" href="lib/onsen/css/onsenui.css">  
+  <link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css">  
+  <link rel="stylesheet" href="styles/app.css"/>
+
+  <script src="lib/onsen/js/angular/angular.js"></script>    
+  <script src="lib/onsen/js/onsenui.js"></script>    
+
+<!--
+  <script src="cordova.js"></script>
+  <script src="js/app.js"></script> -->
+
+  <script>
+    angular.module('app', ['onsen']);
+
+    angular.module('app').controller('AppController', function($scope) {
+
+       $scope.doSomething = function() {
+        setTimeout(function() {
+          alert('tapped');
+        }, 100);
+      };
+
+      $scope.menuTabOnClick = function() {
+       
+        };
+        
+    });
+  </script>
+
+  <style>
+    .tab {
+      line-height: 1;
+    }
+    .tab-icon {
+      font-size: 24px;
+      padding: 0;
+      margin: 0;
+      vertical-align: top;
+      line-height: 28px;
+    }
+    .tab-label {
+      line-height: 11px;
+      vertical-align: top;
+      font-size: 11px;
+    }
+
+    .profile-wrapper {
+      padding: 16px 10px 0 10px;
+    }
+
+    .profile-image {
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+      -webkit-border-radius: 100%;
+      background-color: #ccc;
+    }
+
+    .profile-name {
+      font-size: 18px;
+      padding: 4px 0 2px 0;
+    }
+
+    .profile-email {
+      font-size: 15px;
+      opacity: 0.4;
+    }
+
+    .switch--list-item {
+      margin-right: 0px;
+    }
+
+    .settings-header {
+      font-weight: 500;
+      font-size: 14px;
+      opacity: 0.4;
+      padding: 10px 0 0px 10px;
+      margin-bottom: -4px;
+    }
+
+    .settings-list {
+      margin-top: 10px;
+    }
+
+    .item {
+      padding: 10px;
+      line-height: 1;
+    }
+    .item-thum {
+      background-color: #ccc;
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+      -webkit-border-radius: 100%;
+    }
+    .item-title {
+      font-size: 15px;
+      font-weight: 500;
+    }
+    .item-desc {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.3;
+      margin: 4px 0 0 0;
+      padding: 0 30px 0 0;
+    }
+    .item-label {
+      font-size: 12px;
+      color: #999;
+      float: right;
+    }
+    .list-item-container {
+	  line-height: 1;
+	  padding: 15px 0px 15px 15px;
+	}
+	.thumbnail {
+	  width: 80px;
+	  height: 80px;
+	  border-radius: 4px;
+	  -webkit-border-radius: 4px;
+	}
+	.name {
+	  font-weight: 600;
+	  line-height: 16px;
+	  font-size: 15px;
+	  margin-bottom: 6px;
+	}
+	.location {
+	  font-size: 14px;
+	  opacity: 0.4;
+	  margin-bottom: 6px;
+	}
+	.desc {
+	  line-height: 1.2;
+	  font-size: 13px;
+	}
+
+	.page--shop-details__content {
+	  position: absolute;
+	  left: 0px;
+	  right: 0px;
+	  top: 0px !important;
+	  bottom: 0px;
+	}
+	
+	.card {
+	  background-color: white;
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  color: black;
+	  height: 250px;
+	}
+	
+	.card-toolbar ons-back-button span {
+	  color: white;
+	}
+	
+	.card-name {
+	  font-weight: 600;
+	  font-size: 20px;
+	  padding: 260px 0 8px 0;
+	  text-align: center;
+	}
+	
+	.card-desc {
+	  font-size: 14px;
+	  font-weight: 400;
+	  opacity: 0.9;
+	  text-align: center;
+	  line-height: 1.4;
+	}
+	
+	.action-col {
+	  text-align: center;
+	  opacity: 0.4;
+	  padding: 10px 0 8px;
+	}
+	
+	.action-col:active {
+	  opacity: 0.7;
+	}
+	
+	.action-col ons-button {
+	  padding: 0;
+	  line-height: 1;
+	}
+	
+	.action-icon {
+	  padding: 0 0 4px 0;
+	}
+	
+	.action-icon ons-icon {
+	  font-size: 28px;
+	}
+	
+	.action-label {
+	  font-size: 12px;
+	}
+	
+	.prop-desc {
+	  font-size: 14px;
+	  opacity: 0.7;
+	}
+	
+	.prop-desc ons-icon {
+	  font-size: 14px;
+	  vertical-align: -0px;
+	  opacity: 0.5;
+	}
+   
+   .cra-item-image {
+   	  background-color: white;
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  display: block;
+	  height: 100%;
+   }
+
+   .cra-item-text {
+   	  font-weight: 600;
+	  font-size: 20px;
+	  padding: 150px 0 8px 0;
+	  text-align: center;
+	  color: white;
+	  text-shadow: 1px 1px 15px black;
+   }
+   
+   .cra-item-desc {
+   	  font-size: 14px;
+	  font-weight: 400;
+	  opacity: 0.9;
+	  text-align: center;
+	  line-height: 1.4;
+	  color: white;
+	  text-shadow: 1px 1px 10px black;
+   }
+
+	
+  </style>
+  
+</head>
+
+<body ng-controller="AppController">  
+  <ons-tabbar>
+    <ons-tabbar-item active="true" page="home.html">
+      <div class="tab">
+        <ons-icon icon="ion-home" class="tab-icon"></ons-icon>
+        <div class="tab-label">Home</div>
+      </div>
+    </ons-tabbar-item>
+
+    <ons-tabbar-item  page="categories.html">
+      <div class="tab">
+        <ons-icon icon="ion-pizza" class="tab-icon"></ons-icon>
+        <div class="tab-label">Menu</div>
+      </div>
+    </ons-tabbar-item>
+    
+     <ons-tabbar-item page="about.html">
+      <div class="tab">
+        <ons-icon icon="ion-information-circled" class="tab-icon"></ons-icon>
+        <div class="tab-label">About</div>
+      </div>
+    </ons-tabbar-item>
+  </ons-tabbar>
+  
+   <ons-template id="home.html">
+    <ons-navigator>
+      <ons-page><!--
+        <ons-toolbar modifier="transparent">
+        <div class="left"></div>
+          <div class="center">Home</div>
+          <div class="right"></div>
+        </ons-toolbar>
+ 		
+		--><ons-carousel swipeable overscrollable auto-scroll fullscreen var="carousel">
+	      <ons-carousel-item style="background-color: gray; display: block">
+	      	<div  style="background-image: url(img/demo/food7.jpg);" class="cra-item-image">
+	      	     <div class="cra-item-text">Delicious Treat</div>
+	       		 <div class="cra-item-desc">The food is as good as its content</div>
+	      	</div>
+	   
+	      </ons-carousel-item>
+	      <ons-carousel-item style="background-color: #085078;">
+	        <div style="background-image: url(img/demo/food4.jpg);" class="cra-item-image">
+	      	     <div class="cra-item-text">Born to be Arabic taster</div>
+	       		<div class="cra-item-desc">=D</div>
+	      	</div>
+	      </ons-carousel-item>
+	      
+	      <ons-carousel-item style="background-color: #373B44;">
+	      	 <div style="background-image: url(img/demo/food11.jpg);" class="cra-item-image">
+	      	     <div class="cra-item-text">Broaden your imagination</div>
+	       		<div class="cra-item-desc">Choose unlimited topping combinations of vegetable, meat, and cheeeeeese</div>
+	      	 </div>
+	      </ons-carousel-item>
+	      
+	    <ons-carousel-item style="background-color: #373B44;">
+	      	 <div style="background-image: url(img/demo/food12.jpg);" class="cra-item-image">
+	      	     <div class="cra-item-text">Becouse we love food</div>
+	       		<div class="cra-item-desc">Give time to enjoy our juicy burger.</div>
+	      	 </div>
+	      </ons-carousel-item>
+	     
+	    </ons-carousel>
+
+ 
+      </ons-page>
+    </ons-navigator>
+  </ons-template>
+  
+ <ons-template id="categories.html">
+    <ons-navigator title="Navigator" var="categoriesNavigator">
+      <ons-page>
+        <ons-toolbar>
+          <div class="left"></ons-toolbar-button></div>
+          <div class="center">Menu</div>
+          <div class="right"></div>
+        </ons-toolbar>
+
+  	  <ons-scroller>
+        <ons-list>
+          <ons-list-header>Categories</ons-list-header>
+          <ons-list-item modifier="chevron" class="item" ng-click="categoriesNavigator.pushPage('riseDishes.html', { animation : 'slide' } );">Rise</ons-list-item>
+          <ons-list-item modifier="chevron" class="item" ng-click="categoriesNavigator.pushPage('chineseDkshes.html', { animation : 'slide' } );">Chinese Food</ons-list-item>
+          <ons-list-item modifier="chevron" class="item" ng-click="categoriesNavigator.pushPage('westrenDishes.html', { animation : 'slide' } );">Western</ons-list-item>
+          <ons-list-item modifier="chevron" class="item" ng-click="categoriesNavigator.pushPage('dessertDishes.html', { animation : 'slide' } );">Desserts</ons-list-item>
+        </ons-list>
+      </ons-scroller>
+	  
+      </ons-page>
+  	</ons-navigator>
+  </ons-template>
+   
+   <ons-template id="riseDishes.html">
+
+      <ons-page>
+        <ons-toolbar>
+          <div class="left"><ons-back-button>Back</ons-back-button></ons-toolbar-button></div>
+          <div class="center">Category</div>
+          <div class="right"></div>
+        </ons-toolbar>
+
+  	  <ons-scroller>
+		<ons-list>
+	        <ons-list-item modifier="chevron" class="list-item-container" ng-click="categoriesNavigator.pushPage('rice1.html', { animation : 'slide' });">
+	          <ons-row>
+	            <ons-col width="95px">
+	              <img src="img/demo/food17.jpg" class="thumbnail">
+	            </ons-col>
+	            <ons-col>
+	              <div class="name">
+	                Machbose
+	              </div>
+	              <div class="location">
+	                 6.00 BD
+	              </div>
+	              <div class="desc">
+	                The richest chicken machbose
+	              </div>
+	            </ons-col>
+	            <ons-col width="40px"></ons-col>
+	          </ons-row>
+	        </ons-list-item>
+	        <ons-list-item modifier="chevron" class="list-item-container"  ng-click="categoriesNavigator.pushPage('rice2.html', { animation : 'slide' });">
+	          <ons-row>
+	            <ons-col width="95px">
+	              <img src="img/demo/food2.jpg" class="thumbnail">
+	            </ons-col>
+	            <ons-col>
+	              <div class="name">
+	                Fish Bariani
+	              </div>
+	              <div class="location">
+	                 7.00 BD
+	              </div>
+	              <div class="desc">
+	                Indian fish biryani like you never tasted
+	              </div>
+	            </ons-col>
+	            <ons-col width="40px"></ons-col>
+	          </ons-row>
+	        </ons-list-item>
+	        
+	        <ons-list-item modifier="chevron" class="list-item-container"  ng-click="categoriesNavigator.pushPage('rice3.html', { animation : 'slide' });">
+	          <ons-row>
+	            <ons-col width="95px">
+	              <img src="img/demo/food4.jpg" class="thumbnail">
+	            </ons-col>
+	            <ons-col>
+	              <div class="name">
+	                Curry
+	              </div>
+	              <div class="location">
+	                 5.00 BD
+	              </div>
+	              <div class="desc">
+	                The greatest curry ever. With boneless chicken and perfect curry flavor.
+	              </div>
+	            </ons-col>
+	            <ons-col width="40px"></ons-col>
+	          </ons-row>
+	        </ons-list-item>
+		</ons-list>
+      </ons-scroller>
+	  
+      </ons-page>
+  </ons-template>
+  
+   <ons-template id="chineseDkshes.html">
+
+      <ons-page>
+        <ons-toolbar>
+          <div class="left"><ons-back-button>Back</ons-back-button></ons-toolbar-button></div>
+          <div class="center">Category</div>
+          <div class="right"></div>
+        </ons-toolbar>
+
+  	  <ons-scroller>
+		<ons-list>
+	        <ons-list-item modifier="chevron" class="list-item-container" ng-click="categoriesNavigator.pushPage('chinese1.html', { animation : 'slide' });">
+	          <ons-row>
+	            <ons-col width="95px">
+	              <img src="img/demo/food7.jpg" class="thumbnail">
+	            </ons-col>
+	            <ons-col>
+	              <div class="name">
+	                Sweet Chili Chicken
+	              </div>
+	              <div class="location">
+	                 6.00 BD
+	              </div>
+	              <div class="desc">
+	                A simple and tasty traditional satay with a sweet chilli dish
+	              </div>
+	            </ons-col>
+	            <ons-col width="40px"></ons-col>
+	          </ons-row>
+	        </ons-list-item>
+	        <ons-list-item modifier="chevron" class="list-item-container"  ng-click="categoriesNavigator.pushPage('rice2.html', { animation : 'slide' });">
+	          <ons-row>
+	            <ons-col width="95px">
+	              <img src="img/demo/food9.jpg" class="thumbnail">
+	            </ons-col>
+	            <ons-col>
+	              <div class="name">
+	                Shrip Popcorn
+	              </div>
+	              <div class="location">
+	                 4.00 BD
+	              </div>
+	              <div class="desc">
+	             	 Shrip Popcorn with special spicy souce
+	              </div>
+	            </ons-col>
+	            <ons-col width="40px"></ons-col>
+	          </ons-row>
+	        </ons-list-item>
+	        
+		</ons-list>
+      </ons-scroller>
+	  
+      </ons-page>
+  </ons-template>
+  
+   <ons-template id="westrenDishes.html">
+
+      <ons-page>
+        <ons-toolbar>
+          <div class="left"><ons-back-button>Back</ons-back-button></ons-toolbar-button></div>
+          <div class="center">Category</div>
+          <div class="right"></div>
+        </ons-toolbar>
+
+  	  <ons-scroller>
+		<ons-list>
+	        <ons-list-item modifier="chevron" class="list-item-container" ng-click="categoriesNavigator.pushPage('westren1.html', { animation : 'slide' });">
+	          <ons-row>
+	            <ons-col width="95px">
+	              <img src="img/demo/food11.jpg" class="thumbnail">
+	            </ons-col>
+	            <ons-col>
+	              <div class="name">
+	                Pizza
+	              </div>
+	              <div class="location">
+	                 5.00 BD
+	              </div>
+	              <div class="desc">
+	                Endless choices pizza
+	              </div>
+	            </ons-col>
+	            <ons-col width="40px"></ons-col>
+	          </ons-row>
+	        </ons-list-item>
+	        <ons-list-item modifier="chevron" class="list-item-container"  ng-click="categoriesNavigator.pushPage('westren2.html', { animation : 'slide' });">
+	          <ons-row>
+	            <ons-col width="95px">
+	              <img src="img/demo/food12.jpg" class="thumbnail">
+	            </ons-col>
+	            <ons-col>
+	              <div class="name">
+	                Burger
+	              </div>
+	              <div class="location">
+	                 4.00 BD
+	              </div>
+	              <div class="desc">
+	             	These are definitely the best burgers I've ever had.
+	              </div>
+	            </ons-col>
+	            <ons-col width="40px"></ons-col>
+	          </ons-row>
+	        </ons-list-item>
+	        
+		</ons-list>
+      </ons-scroller>
+	  
+      </ons-page>
+  </ons-template>
+  
+  <ons-template id="dessertDishes.html">
+
+      <ons-page>
+        <ons-toolbar>
+          <div class="left"><ons-back-button>Back</ons-back-button></ons-toolbar-button></div>
+          <div class="center">Category</div>
+          <div class="right"></div>
+        </ons-toolbar>
+
+  	  <ons-scroller>
+		<ons-list>
+	        <ons-list-item modifier="chevron" class="list-item-container" ng-click="categoriesNavigator.pushPage('dessert1.html', { animation : 'slide' });">
+	          <ons-row>
+	            <ons-col width="95px">
+	              <img src="img/demo/food14.jpg" class="thumbnail">
+	            </ons-col>
+	            <ons-col>
+	              <div class="name">
+	                Red Velvet
+	              </div>
+	              <div class="location">
+	                 10.00 BD
+	              </div>
+	              <div class="desc">
+	                A yummy cake layer topped with cream cheese and cooked icing
+	              </div>
+	            </ons-col>
+	            <ons-col width="40px"></ons-col>
+	          </ons-row>
+	        </ons-list-item>
+	        <ons-list-item modifier="chevron" class="list-item-container"  ng-click="categoriesNavigator.pushPage('dessert2.html', { animation : 'slide' });">
+	          <ons-row>
+	            <ons-col width="95px">
+	              <img src="img/demo/food15.jpg" class="thumbnail">
+	            </ons-col>
+	            <ons-col>
+	              <div class="name">
+	                Ice Cream
+	              </div>
+	              <div class="location">
+	                 4.00 BD
+	              </div>
+	              <div class="desc">
+	             	Home made berries ice cream 
+	              </div>
+	            </ons-col>
+	            <ons-col width="40px"></ons-col>
+	          </ons-row>
+	        </ons-list-item>
+	        
+		</ons-list>
+      </ons-scroller>
+	  
+      </ons-page>
+  </ons-template>
+  
+   <ons-template id="rice1.html">
+    <ons-page modifier="shop-details">
+      <ons-toolbar modifier="transparent">
+       <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center"></div>
+        <div class="right"></div>
+      </ons-toolbar>
+
+      <div style="background-image: url(img/demo/food17.jpg);" class="card">
+      		 <div class="card-name">Machbose</div>
+       		 <div class="card-desc">6.00 BD
+       		 	<br>Very rich machbose
+       			<br>Chicken cooked with rice allowing the rice to absorb the rich flavours.
+       		 </div>
+      </div>
+
+    </ons-page>
+  </ons-template>
+  
+     <ons-template id="rice2.html">
+    <ons-page modifier="shop-details">
+      <ons-toolbar modifier="transparent">
+       <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center"></div>
+        <div class="right"></div>
+      </ons-toolbar>
+
+      <div style="background-image: url(img/demo/food2.jpg);" class="card">
+      		 <div class="card-name">Fish Bariani</div>
+       		 <div class="card-desc">6.00 BD
+       		 	<br>Indian fish biryani like you never tasted
+       			<br>Hamur and basmati rice are baked together to make this traditional Indian one-pot dish. 
+       		 </div>
+      </div>
+
+    </ons-page>
+  </ons-template>
+  
+  <ons-template id="rice3.html">
+    <ons-page modifier="shop-details">
+      <ons-toolbar modifier="transparent">
+       <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center"></div>
+        <div class="right"></div>
+      </ons-toolbar>
+
+      <div style="background-image: url(img/demo/food4.jpg);" class="card">
+      		 <div class="card-name">Curry</div>
+       		 <div class="card-desc">5.00 BD
+       		 	<br>The greatest curry ever. With boneless chicken and perfect curry flavor.
+       			<br>
+       		 </div>
+      </div>
+
+    </ons-page>
+  </ons-template>
+  
+  <ons-template id="chinese1.html">
+    <ons-page modifier="shop-details">
+      <ons-toolbar modifier="transparent">
+       <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center"></div>
+        <div class="right"></div>
+      </ons-toolbar>
+
+      <div style="background-image: url(img/demo/food7.jpg);" class="card">
+      		 <div class="card-name">Sweet Chili Chicken</div>
+       		 <div class="card-desc">6.00 BD
+       		 	<br>Crispy Sweet Chili Chicken
+       			<br>A simple and tasty traditional satay with a sweet chilli dish
+       		 </div>
+      </div>
+
+    </ons-page>
+  </ons-template>
+  
+   <ons-template id="Chinese2.html">
+    <ons-page modifier="shop-details">
+      <ons-toolbar modifier="transparent">
+       <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center"></div>
+        <div class="right"></div>
+      </ons-toolbar>
+
+      <div style="background-image: url(img/demo/food9.jpg);" class="card">
+      		 <div class="card-name">Shrip Popcorn</div>
+       		 <div class="card-desc">4.00 BD
+       		 	<br>Shrip Popcorn bites
+       			<br>Easy to eat never easy to forget.
+       		 </div>
+      </div>
+
+    </ons-page>
+  </ons-template>
+  
+
+   <ons-template id="westren1.html">
+    <ons-page modifier="shop-details">
+      <ons-toolbar modifier="transparent">
+       <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center"></div>
+        <div class="right"></div>
+      </ons-toolbar>
+
+      <div style="background-image: url(img/demo/food11.jpg);" class="card">
+      		 <div class="card-name">Pizza</div>
+       		 <div class="card-desc">5.00 BD
+       		 	<br>Endless choices pizza
+       			<br>Pizza like you've never come across before! 
+       		 </div>
+      </div>
+
+    </ons-page>
+  </ons-template>
+  
+   <ons-template id="westren2.html">
+    <ons-page modifier="shop-details">
+      <ons-toolbar modifier="transparent">
+       <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center"></div>
+        <div class="right"></div>
+      </ons-toolbar>
+
+      <div style="background-image: url(img/demo/food12.jpg);" class="card">
+      		 <div class="card-name">Burger</div>
+       		 <div class="card-desc">4.00 BD
+       			<br>These are definitely the best burgers I've ever had.
+       		 </div>
+      </div>
+
+    </ons-page>
+  </ons-template>
+  
+   <ons-template id="dessert1.html">
+    <ons-page modifier="shop-details">
+      <ons-toolbar modifier="transparent">
+       <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center"></div>
+        <div class="right"></div>
+      </ons-toolbar>
+
+      <div style="background-image: url(img/demo/food14.jpg);" class="card">
+      		 <div class="card-name">Red Velvet</div>
+       		 <div class="card-desc">10.00 BD
+       			<br>A yummy cake layer topped with cream cheese and cooked icing
+       		 </div>
+      </div>
+
+    </ons-page>
+  </ons-template>
+  
+   <ons-template id="dessert2.html">
+    <ons-page modifier="shop-details">
+      <ons-toolbar modifier="transparent">
+       <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center"></div>
+        <div class="right"></div>
+      </ons-toolbar>
+
+      <div style="background-image: url(img/demo/food15.jpg);" class="card">
+      		 <div class="card-name">Ice Cream</div>
+       		 <div class="card-desc">4.00 BD
+       			<br>Home made berries ice cream 
+       		 </div>
+      </div>
+
+    </ons-page>
+  </ons-template>
+    
+ <ons-template id="about.html">
+    <ons-page modifier="shop-details">
+      <ons-toolbar >
+       <div class="left"></div>
+        <div class="center">About</div>
+        <div class="right"></div>
+      </ons-toolbar>
+
+	 <div style="text-align: center" class="content-padded">
+	 <br>
+	 <br>
+	 <br>
+	  	<br>
+	  	<b>MyMenu application</b>
+	  	<p>This is a sample of Menu application built to be easily customized to your resturant menu</p>
+	  	<p>Get your own version</p>
+	  	<ons-button modifier="large" style="background-color:green;" onclick="window.open('tel:009733986660');" >Call</ons-button>
+	  	
+	  	<br>
+	  	
+	</div>
+
+    </ons-page>
+  </ons-template>
+	  
+</body>
+  

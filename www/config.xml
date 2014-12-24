@@ -15,14 +15,14 @@
             EsDev Team
         </author>
         
-        <content src="food2.html" />
+        <content src="demo.html" />
         
         <access origin="*" />
         
         <preference name="SplashScreen" value="splash" />
-        <preference name="show-splash-screen-spinner" value="true" />
-    	<preference name="auto-hide-splash-screen" value="false" />
-    	<preference name="SplashScreenDelay" value="10" />
+        <preference name="show-splash-screen-spinner" value="false" />
+    	<preference name="auto-hide-splash-screen" value="true" />
+    	<preference name="SplashScreenDelay" value="0" />
         
         <gap:plugin name="org.apache.cordova.device" />
         <gap:plugin name="org.apache.cordova.splashscreen" />

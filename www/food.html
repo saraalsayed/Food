@@ -14,18 +14,25 @@
   <script src="lib/onsen/js/angular/angular.js"></script>    
   <script src="lib/onsen/js/onsenui.js"></script>    
 
+<!--
   <script src="cordova.js"></script>
-  <script src="js/app.js"></script> 
+  <script src="js/app.js"></script> -->
 
   <script>
     angular.module('app', ['onsen']);
 
     angular.module('app').controller('AppController', function($scope) {
-      $scope.doSomething = function() {
+
+       $scope.doSomething = function() {
         setTimeout(function() {
           alert('tapped');
         }, 100);
       };
+
+      $scope.menuTabOnClick = function() {
+       
+        };
+        
     });
   </script>
 
@@ -111,114 +118,331 @@
       color: #999;
       float: right;
     }
+    .list-item-container {
+	  line-height: 1;
+	  padding: 15px 0px 15px 15px;
+	}
+	.thumbnail {
+	  width: 80px;
+	  height: 80px;
+	  border-radius: 4px;
+	  -webkit-border-radius: 4px;
+	}
+	.name {
+	  font-weight: 500;
+	  line-height: 16px;
+	  font-size: 15px;
+	  margin-bottom: 6px;
+	}
+	.location {
+	  font-size: 14px;
+	  opacity: 0.4;
+	  margin-bottom: 6px;
+	}
+	.desc {
+	  line-height: 1.2;
+	  font-size: 13px;
+	}
+
+	.page--shop-details__content {
+	  position: absolute;
+	  left: 0px;
+	  right: 0px;
+	  top: 0px !important;
+	  bottom: 0px;
+	}
+	
+	.card {
+	  background-color: white;
+	  background-image: url(img/1.jpg);
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  color: black;
+	  height: 250px;
+	}
+	
+	.card-toolbar ons-back-button span {
+	  color: white;
+	}
+	
+	.card-name {
+	  font-weight: 600;
+	  font-size: 20px;
+	  padding: 260px 0 8px 0;
+	  text-align: center;
+	}
+	
+	.card-desc {
+	  font-size: 14px;
+	  font-weight: 400;
+	  opacity: 0.9;
+	  text-align: center;
+	  line-height: 1.4;
+	}
+	
+	.action-col {
+	  text-align: center;
+	  opacity: 0.4;
+	  padding: 10px 0 8px;
+	}
+	
+	.action-col:active {
+	  opacity: 0.7;
+	}
+	
+	.action-col ons-button {
+	  padding: 0;
+	  line-height: 1;
+	}
+	
+	.action-icon {
+	  padding: 0 0 4px 0;
+	}
+	
+	.action-icon ons-icon {
+	  font-size: 28px;
+	}
+	
+	.action-label {
+	  font-size: 12px;
+	}
+	
+	.prop-desc {
+	  font-size: 14px;
+	  opacity: 0.7;
+	}
+	
+	.prop-desc ons-icon {
+	  font-size: 14px;
+	  vertical-align: -0px;
+	  opacity: 0.5;
+	}
+   
+   .cra-item-image {
+   	  background-color: white;
+	  background-image: url(img/2.jpg);
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  display: block;
+	  height: 100%;
+   }
+    .cra-item-image2 {
+   	  background-color: white;
+	  background-image: url(img/1.jpg);
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  display: block;
+	  height: 100%;
+   }
+   .cra-item-text {
+   	  font-weight: 600;
+	  font-size: 20px;
+	  padding: 200px 0 8px 0;
+	  text-align: center;
+	  color: white;
+   }
+   
+   .cra-item-desc {
+   	  font-size: 14px;
+	  font-weight: 400;
+	  opacity: 0.9;
+	  text-align: center;
+	  line-height: 1.4;
+	  color: white;
+   }
+
+	
   </style>
   
 </head>
 
-<body ng-controller="AppController">    
-  
+<body ng-controller="AppController">  
   <ons-tabbar>
     <ons-tabbar-item active="true" page="home.html">
       <div class="tab">
         <ons-icon icon="ion-home" class="tab-icon"></ons-icon>
-        <div class="tab-label">Timeline</div>
+        <div class="tab-label">Home</div>
       </div>
     </ons-tabbar-item>
 
-    <ons-tabbar-item page="settings.html">
+    <ons-tabbar-item  page="categories.html">
       <div class="tab">
-        <ons-icon icon="ion-gear-a" class="tab-icon"></ons-icon>
-        <div class="tab-label">Settings</div>
+        <ons-icon icon="ion-pizza" class="tab-icon"></ons-icon>
+        <div class="tab-label">Menu</div>
+      </div>
+    </ons-tabbar-item>
+    
+     <ons-tabbar-item page="about.html">
+      <div class="tab">
+        <ons-icon icon="ion-information-circled" class="tab-icon"></ons-icon>
+        <div class="tab-label">About</div>
       </div>
     </ons-tabbar-item>
   </ons-tabbar>
-
-  <ons-template id="home.html">
+  
+   <ons-template id="home.html">
     <ons-navigator>
       <ons-page>
         <ons-toolbar>
-          <div class="left"><ons-toolbar-button ng-click="doSomething()"><ons-icon icon="ion-compose"></ons-icon></ons-toolbar-button></div>
+          <div class="left"></div>
           <div class="center">Home</div>
           <div class="right"></div>
         </ons-toolbar>
+ 		
+		<ons-carousel swipeable overscrollable auto-scroll fullscreen var="carousel">
+	      <ons-carousel-item style="background-color: gray; display: block">
+	      	<div class="cra-item-image">
+	      	     <div class="cra-item-text">Ummy Food</div>
+	       		 <div class="cra-item-desc">jhd asfajskhf eroit ,m dfgosdf hewrtg kljdfh klajd f</div>
+	      	</div>
+	   
+	      </ons-carousel-item>
+	      <ons-carousel-item style="background-color: #085078;">
+	        <div class="cra-item-image2">
+	      	     <div class="cra-item-text"></div>
+	       		<div class="cra-item-desc">jhd asfajskhf eroit ,m dfgosdf hewrtg kljdfh klajd f <br>ajshdf asjdf hasdjkfh asdfjha sdjfhasdj kfhajksdfh asdjfh asjdhf asdfh</div>
+	      	</div>
+	      </ons-carousel-item>
+	      <ons-carousel-item style="background-color: #373B44;">
+	         
+	      	     <div class="cra-item-text">hii =D</div>
+	       		<div class="cra-item-desc">jhd asfajskhf eroit ,m dfgosdf hewrtg kljdfh klajd f <br>ajshdf asjdf hasdjkfh asdfjha sdjfhasdj kfhajksdfh asdjfh asjdhf asdfh</div>
+	      		
+	      </ons-carousel-item>
+	      <ons-carousel-item style="background-color: #D38312;">
+	        <div class="item-label">ORANGE</div>
+	      </ons-carousel-item>
+	     
+	    </ons-carousel>
 
-        <ons-list style="margin: -1px 0">
-          <ons-list-item modifier="chevron" class="item" ng-repeat="i in [1,2,3,4,5]" ng-click="doSomething()">
-            <ons-row>
-              <ons-col width="60px"> 
-                <div class="item-thum"></div>
-              </ons-col>
-              <ons-col>
-                <header>
-                  <span class="item-title">Rorem Ipsum</span>
-                  <span class="item-label">5h</span>
-                </header>
-                <p class="item-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              </ons-col>
-            </ons-row>                          
-          </ons-list-item>
-        </ons-list>
+ 
       </ons-page>
     </ons-navigator>
   </ons-template>
+  
+ <ons-template id="categories.html">
+    <ons-navigator title="Navigator" var="categoriesNavigator">
+      <ons-page>
+        <ons-toolbar>
+          <div class="left"></ons-toolbar-button></div>
+          <div class="center">Menu</div>
+          <div class="right"></div>
+        </ons-toolbar>
 
-  <ons-template id="settings.html">
-    <ons-page>
-      <ons-toolbar>
-        <div class="center">Settings</div>
+  	  <ons-scroller>
+        <ons-list>
+          <ons-list-header>Categories</ons-list-header>
+          <ons-list-item modifier="chevron" class="item" ng-click="categoriesNavigator.pushPage('meals.html', { animation : 'slide' });">Favorite</ons-list-item>
+          <ons-list-item modifier="chevron" class="item" ng-click="categoriesNavigator.pushPage('meals.html', { animation : 'slide' } );">Main Course</ons-list-item>
+          <ons-list-item modifier="chevron" class="item">Dessert</ons-list-item>
+        </ons-list>
+      </ons-scroller>
+	  
+      </ons-page>
+  	</ons-navigator>
+  </ons-template>
+  
+   <ons-template id="meals.html">
+
+      <ons-page>
+        <ons-toolbar>
+          <div class="left"><ons-back-button>Back</ons-back-button></ons-toolbar-button></div>
+          <div class="center">Category</div>
+          <div class="right"></div>
+        </ons-toolbar>
+
+  	  <ons-scroller>
+		<ons-list>
+	        <ons-list-item modifier="chevron" class="list-item-container" ng-click="categoriesNavigator.pushPage('meal.html', { animation : 'slide' });">
+	          <ons-row>
+	            <ons-col width="95px">
+	              <img src="img/1.jpg" class="thumbnail">
+	            </ons-col>
+	            <ons-col>
+	              <div class="name">
+	                Big Burger
+	              </div>
+	              <div class="location">
+	                 2.00 BD
+	              </div>
+	              <div class="desc">
+	                Very juicy big burger
+	              </div>
+	            </ons-col>
+	            <ons-col width="40px"></ons-col>
+	          </ons-row>
+	        </ons-list-item>
+	        <ons-list-item modifier="chevron" class="list-item-container"  ng-click="categoriesNavigator.pushPage('meal.html', { animation : 'slide' });">
+	          <ons-row>
+	            <ons-col width="95px">
+	              <img src="img/2.jpg" class="thumbnail">
+	            </ons-col>
+	            <ons-col>
+	              <div class="name">
+	                Big Burger
+	              </div>
+	              <div class="location">
+	                 2.00 BD
+	              </div>
+	              <div class="desc">
+	                Very juicy big burger
+	              </div>
+	            </ons-col>
+	            <ons-col width="40px"></ons-col>
+	          </ons-row>
+	        </ons-list-item>
+		</ons-list>
+      </ons-scroller>
+	  
+      </ons-page>
+  </ons-template>
+  
+  <ons-template id="meal.html">
+    <ons-page modifier="shop-details">
+      <ons-toolbar modifier="transparent">
+       <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">Onsen Sushi</div>
+        <div class="right"></div>
       </ons-toolbar>
 
-      <ons-row class="profile-wrapper">
-        <ons-col width="60px" class="profile-image-wrapper">
-          <div class="profile-image"></div>
-        </ons-col>
-
-        <ons-col>
-          <div class="profile-name">Foobar</div>
-          <div class="profile-email">foobar@example.com</div>
-        </ons-col>
-
-      </ons-row>
-
-      <div class="settings-header">Share</div>
-
-      <ons-list modifier="inset" class="settings-list">
-        <ons-list-item>
-          Twitter
-          <ons-switch modifier="list-item"></ons-switch>
-        </ons-list-item>
-
-        <ons-list-item>
-          Facebook
-          <ons-switch modifier="list-item" checked></ons-switch>
-        </ons-list-item>
-      </ons-list>
-
-      <div class="settings-header">Others</div>
-
-      <ons-list modifier="inset" class="settings-list">
-        <ons-list-item modifier="chevron" ng-click="doSomething()">
-          Terms of Service
-        </ons-list-item>
-
-        <ons-list-item modifier="chevron" ng-click="doSomething()">
-          Privacy Policy
-        </ons-list-item>
-      </ons-list>
-
-      <br>
-
-      <ons-list modifier="inset" class="settings-list">
-        <ons-list-item modifier="tappable" ng-click="doSomething()">
-          <ons-icon icon="ion-log-out" style="opacity: 0.8"></ons-icon>
-          Sign out
-        </ons-list-item>
-      </ons-list>
-
-      <br>
+      <div class="card">
+      		 <div class="card-name">Onsen Sushi</div>
+       		 <div class="card-desc"> 2.0 BD
+       		 	<br>Open until 10:30pm Traditional Japanese Sushi
+       			<br>kjsldhg sdfjg sdhf gsdfjg sdfjkghe rty ertok ZSMdcwprot djfng jalksdjf 
+       		 </div>
+      </div>
 
     </ons-page>
   </ons-template>
+    
+ <ons-template id="about.html">
+    <ons-page modifier="shop-details">
+      <ons-toolbar >
+       <div class="left"></div>
+        <div class="center">About</div>
+        <div class="right"></div>
+      </ons-toolbar>
 
+	 <div style="text-align: center" class="content-padded">
+	 <br>
+	 <br>
+	 <br>
+	  	Openning hours are <br>
+	  	10:00 AM - 10:00 PM
+	  	Isa Town
+	  	<ons-button modifier="large" style="background-color:green;">Call Isa Town</ons-button>
+	  	<br>
+	  	Hamad town 
+	  	<ons-button modifier="large" style="background-color:green;">Call Hamad</ons-button>
+	  	<br>
+	  	Riffa town
+	  	<ons-button modifier="large" style="background-color:green;">Call Riffa town</ons-button>
+	  	
+	</div>
+
+    </ons-page>
+  </ons-template>
+	  
 </body>
-</html>
+  
